@@ -39,4 +39,9 @@ class Specialty
     doctors
   end
 
+  def update(new_information)
+    @name = new_information['name']
+    DB.exec("UPDATE specialty SET name = '#{@name}' WHERE id = #{@id}")
+  end
+
 end

@@ -39,4 +39,11 @@ describe 'Specialty' do
     expect(test_specialty.doctors).to eq [test_doctor, another_test_doctor, yet_another_test_doctor]
   end
 
+  it 'updates specialty information' do
+    test_specialty = Specialty.new({'name' => 'Pediatrics', 'id' => 1})
+    test_specialty.save
+    test_specialty.update({'name' => 'Podiatry'})
+    expect(test_specialty.name).to eq 'Podiatry'
+  end
+
 end
