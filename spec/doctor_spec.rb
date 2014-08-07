@@ -43,4 +43,19 @@ describe 'Doctor' do
     expect(Doctor.all).to eq [another_test_doc]
   end
 
+  it 'returns a list of all doctors including the number of patients they see' do
+    test_doc = Doctor.new({'name' => 'Marty McFly', 'specialty_id' => 1, 'insurance_id' => 1, 'id' => 1})
+    test_doc.save
+    another_test_doc = Doctor.new({'name' => 'Dr. Seuss', 'specialty_id' => 2, 'insurance_id' => 2, 'id' => 2})
+    another_test_doc.save
+    test_patient = Patient.new({'name' => 'Vanilla Ice', 'birthdate' => '1975-01-15', 'doctor_id' => test_doc.id, 'id' => 1})
+    test_patient.save
+    another_test_patient = Patient.new({'name' => 'Chocolate Ice', 'birthdate' => '1986-05-31', 'doctor_id' => test_doc.id, 'id' => 2})
+    another_test_patient.save
+    yet_another_test_patient = Patient.new({'name' => 'Strawberry Ice', 'birthdate' => '1999-12-31', 'doctor_id' => another_test_doc.id, 'id' => 3})
+    yet_another_test_patient.save
+    binding.pry
+    expect(Doctor.patients).to eq [[test_doc, 2], [another_test_doc, 1]]
+  end
+
 end

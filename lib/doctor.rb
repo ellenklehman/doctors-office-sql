@@ -1,3 +1,5 @@
+
+
 class Doctor
 
   attr_reader :name, :specialty_id, :insurance_id, :id
@@ -39,8 +41,22 @@ class Doctor
   end
 
   def delete
-    DB.exec("DELETE FROM doctor WHERE id = #{self.id};")
+    DB.exec("DELETE FROM doctor WHERE id = #{@id};")
     #add in more deletes when join tables and appointment tables are created
+  end
+
+  def self.patients
+    docs_patients = []
+    self.all.each do |doctor|
+      doc_name = doctor.name
+      doc_id = doctor.id
+      doc_specialty = doctor.specialty_id
+      doc_insurance = doctor.insurance_id
+      patient_count = DB.exec("SELECT COUNT (*) FROM patient WHERE doctor_id = #{doc_id};")
+      number = patient_count.first['count'].to_i
+      docs_patients << [doctor, number]
+    end
+    docs_patients
   end
 
 end
