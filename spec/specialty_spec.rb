@@ -18,4 +18,10 @@ describe 'Specialty' do
     test_specialty = Specialty.new({'name' => 'Pediatrics', 'id' => 1})
     expect(Specialty.all).to eq []
   end
+
+  it 'allows specialty information to be saved' do
+    test_specialty = Specialty.new({'name' => 'Pediatrics', 'id' => 1})
+    test_specialty.save
+    expect(Specialty.all).to eq [test_specialty]
+  end
 end
