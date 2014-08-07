@@ -27,4 +27,16 @@ class Specialty
     self.name == another_specialty.name
   end
 
+  def doctors
+    results = DB.exec("SELECT * FROM doctor WHERE specialty_id = #{self.id};")
+    doctors = []
+    results.each do |result|
+      name = result['name']
+      specialty_id = result['specialty_id'].to_i
+      id = result['id'].to_i
+      doctors << Doctor.new({'name' => name, 'specialty_id' => specialty_id, 'id' => id})
+    end
+    doctors
+  end
+
 end
