@@ -7,4 +7,8 @@ class Specialty
     @id = attributes['id']
   end
 
+  def self.all
+    []
+  end
+
 end

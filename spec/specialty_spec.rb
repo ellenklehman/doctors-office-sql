@@ -13,4 +13,9 @@ describe 'Specialty' do
     expect(test_specialty.name).to eq 'Pediatrics'
     expect(test_specialty.id).to eq 1
   end
+
+  it 'creates a place to hold all specialty entries' do
+    test_specialty = Specialty.new({'name' => 'Pediatrics', 'id' => 1})
+    expect(Specialty.all).to eq []
+  end
 end
