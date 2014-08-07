@@ -54,7 +54,6 @@ describe 'Doctor' do
     another_test_patient.save
     yet_another_test_patient = Patient.new({'name' => 'Strawberry Ice', 'birthdate' => '1999-12-31', 'doctor_id' => another_test_doc.id, 'id' => 3})
     yet_another_test_patient.save
-    binding.pry
     expect(Doctor.patients).to eq [[test_doc, 2], [another_test_doc, 1]]
   end
 
