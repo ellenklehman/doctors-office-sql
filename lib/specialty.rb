@@ -41,7 +41,12 @@ class Specialty
 
   def update(new_information)
     @name = new_information['name']
-    DB.exec("UPDATE specialty SET name = '#{@name}' WHERE id = #{@id}")
+    DB.exec("UPDATE specialty SET name = '#{@name}' WHERE id = #{@id};")
+  end
+
+  def delete
+    DB.exec("DELETE FROM specialty WHERE id = #{self.id};")
+    #add in more deletes when join tables and appointment tables are created
   end
 
 end

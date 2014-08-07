@@ -46,4 +46,13 @@ describe 'Specialty' do
     expect(test_specialty.name).to eq 'Podiatry'
   end
 
+  it 'deletes a specialty record' do
+    test_specialty = Specialty.new({'name' => 'Pediatrics', 'id' => 1})
+    test_specialty.save
+    another_test_specialty = Specialty.new({'name' => 'General Practice', 'id' => 2})
+    another_test_specialty.save
+    test_specialty.delete
+    expect(Specialty.all).to eq [another_test_specialty]
+  end
+
 end

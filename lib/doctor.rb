@@ -39,7 +39,7 @@ class Doctor
   end
 
   def delete
-    DB.exec("DELETE FROM doctor WHERE id = #{self.id}")
+    DB.exec("DELETE FROM doctor WHERE id = #{self.id};")
     #add in more deletes when join tables and appointment tables are created
   end
 
