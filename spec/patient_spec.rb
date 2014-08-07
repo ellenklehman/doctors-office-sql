@@ -26,4 +26,13 @@ describe 'Patient' do
     test_patient.save
     expect(Patient.all).to eq [test_patient]
   end
+
+  it 'allows patients to update their doctor' do
+    test_patient = Patient.new({'name' => 'Vanilla Ice', 'birthdate' => '1975-01-15', 'doctor_id' => 1, 'id' => 1})
+    test_patient.save
+    test_doctor = Doctor.new({'name' => 'Dr. Dre', 'specialty_id' => 2})
+    test_doctor.save
+    test_patient.update_doctor(test_doctor.id)
+    expect(test_patient.doctor_id).to eq test_doctor.id
+  end
 end

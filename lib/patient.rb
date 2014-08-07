@@ -30,4 +30,9 @@ class Patient
   def ==(test)
     self.name == test.name && self.birthdate == test.birthdate && self.doctor_id == test.doctor_id
   end
+
+  def update_doctor(new_doctor_id)
+    DB.exec("UPDATE patient SET doctor_id = #{new_doctor_id} WHERE id= #{@id};")
+    @doctor_id = new_doctor_id
+  end
 end
