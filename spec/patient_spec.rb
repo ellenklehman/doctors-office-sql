@@ -35,4 +35,13 @@ describe 'Patient' do
     expect(test_patient.birthdate).to eq '1967-10-31'
     expect(test_patient.doctor_id).to eq 2
   end
+
+  it 'deletes a patients record' do
+    test_patient = Patient.new({'name' => 'Vanilla Ice', 'birthdate' => '1975-01-15', 'doctor_id' => 1, 'id' => 1})
+    test_patient.save
+    another_test_patient = Patient.new({'name' => 'Chocolate Ice', 'birthdate' => '1986-05-31', 'doctor_id' => 1, 'id' => 1})
+    another_test_patient.save
+    test_patient.delete
+    expect(Patient.all).to eq [another_test_patient]
+  end
 end
