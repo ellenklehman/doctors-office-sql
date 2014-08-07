@@ -27,12 +27,12 @@ describe 'Patient' do
     expect(Patient.all).to eq [test_patient]
   end
 
-  it 'allows patients to update their doctor' do
+  it 'allows a patient to update their information' do
     test_patient = Patient.new({'name' => 'Vanilla Ice', 'birthdate' => '1975-01-15', 'doctor_id' => 1, 'id' => 1})
     test_patient.save
-    test_doctor = Doctor.new({'name' => 'Dr. Dre', 'specialty_id' => 2, 'insurance_id' => 1})
-    test_doctor.save
-    test_patient.update_doctor(test_doctor.id)
-    expect(test_patient.doctor_id).to eq test_doctor.id
+    test_patient.update({'name' => 'The Artist formerly known as Vanilla Ice', 'doctor_id' => 2, 'birthdate' => '1967-10-31'})
+    expect(test_patient.name).to eq 'The Artist formerly known as Vanilla Ice'
+    expect(test_patient.birthdate).to eq '1967-10-31'
+    expect(test_patient.doctor_id).to eq 2
   end
 end
