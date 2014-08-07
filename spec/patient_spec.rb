@@ -15,4 +15,9 @@ describe 'Patient' do
     expect(test_patient.doctor_id).to eq 1
     expect(test_patient.id).to eq 1
   end
+
+  it 'creates a place to hold all patient entries' do
+    test_patient = Patient.new({'name' => 'Vanilla Ice', 'birthdate' => '1975-01-15', 'doctor_id' => 1, 'id' => 1})
+    expect(Patient.all).to eq []
+  end
 end
