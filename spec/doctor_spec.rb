@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe 'Doctor' do
   describe 'initialize' do
@@ -24,4 +25,13 @@ describe 'Doctor' do
     test_doc.save
     expect(Doctor.all).to eq [test_doc]
   end
+
+  it 'allows a doctor to update their information' do
+    test_doc = Doctor.new({'name' => 'Marty McFly', 'specialty_id' => 1, 'insurance_id' => 1, 'id' => 1})
+    test_doc.save
+    test_doc.update({'name' => 'Dr.Seuss', 'insurance_id' => 2})
+    expect(test_doc.name).to eq 'Dr.Seuss'
+    expect(test_doc.insurance_id).to eq 2
+  end
+
 end

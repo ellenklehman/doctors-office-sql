@@ -31,4 +31,11 @@ class Doctor
     self.name == test.name
   end
 
+  def update(new_information)
+    @name = new_information['name']
+    @insurance_id = new_information['insurance_id'].to_i
+    @specialty_id = new_information['specialty_id'].to_i
+    DB.exec("UPDATE doctor SET name = '#{@name}', insurance_id = #{@insurance_id}, specialty_id = #{@specialty_id} WHERE id = #{@id};")
+  end
+
 end
