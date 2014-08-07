@@ -18,4 +18,10 @@ describe 'Doctor' do
     test_doc = Doctor.new({'name' => 'Marty McFly', 'id' => 1})
     expect(Doctor.all).to eq []
   end
+
+  it 'allows doctor entries to be saved' do
+    test_doc = Doctor.new({'name' => 'Marty McFly', 'id' => 1})
+    test_doc.save
+    expect(Doctor.all).to eq [test_doc]
+  end
 end
