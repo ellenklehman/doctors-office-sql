@@ -27,4 +27,9 @@ class Insurance
     self.name == another_insurance.name
   end
 
+  def update(new_information)
+    @name = new_information['name']
+    DB.exec("UPDATE insurance SET name = '#{@name}' WHERE id = #{@id};")
+  end
+
 end

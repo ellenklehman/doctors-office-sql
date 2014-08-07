@@ -24,4 +24,11 @@ describe 'Insurance' do
     test_insurance.save
     expect(Insurance.all).to eq [test_insurance]
   end
+
+  it 'allows insurance information to be updated' do
+    test_insurance = Insurance.new({'name' => 'Red Cross', 'id' => 1})
+    test_insurance.save
+    test_insurance.update({'name' => 'Health Shield'})
+    expect(test_insurance.name).to eq 'Health Shield'
+  end
 end
