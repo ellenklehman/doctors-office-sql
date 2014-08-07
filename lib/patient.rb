@@ -35,4 +35,6 @@ class Patient
     DB.exec("UPDATE patient SET doctor_id = #{new_doctor_id} WHERE id= #{@id};")
     @doctor_id = new_doctor_id
   end
+
+
 end

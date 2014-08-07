@@ -30,11 +30,11 @@ describe 'Specialty' do
     test_specialty.save
     another_test_specialty = Specialty.new({'name' => 'General Practice', 'id' => 2})
     another_test_specialty.save
-    test_doctor = Doctor.new({'name' => 'Dr. Dre', 'specialty_id' => test_specialty.id})
+    test_doctor = Doctor.new({'name' => 'Dr. Dre', 'specialty_id' => test_specialty.id, 'insurance_id' => 1})
     test_doctor.save
-    another_test_doctor = Doctor.new({'name' => 'Dr. Oz', 'specialty_id' => test_specialty.id})
+    another_test_doctor = Doctor.new({'name' => 'Dr. Oz', 'specialty_id' => test_specialty.id, 'insurance_id' => 1})
     another_test_doctor.save
-    yet_another_test_doctor = Doctor.new({'name' => 'Dr. Seuss', 'specialty_id' => test_specialty.id})
+    yet_another_test_doctor = Doctor.new({'name' => 'Dr. Seuss', 'specialty_id' => test_specialty.id, 'insurance_id' => 1})
     yet_another_test_doctor.save
     expect(test_specialty.doctors).to eq [test_doctor, another_test_doctor, yet_another_test_doctor]
   end
