@@ -13,4 +13,9 @@ describe 'Doctor' do
     expect(test_doc.name).to eq 'Marty McFly'
     expect(test_doc.id).to eq 1
   end
+
+  it 'creates a place to hold all doctor entries' do
+    test_doc = Doctor.new({'name' => 'Marty McFly', 'id' => 1})
+    expect(Doctor.all).to eq []
+  end
 end
