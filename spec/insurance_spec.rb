@@ -14,8 +14,14 @@ describe 'Insurance' do
     expect(test_insurance.id).to eq 1
   end
 
-  it 'creates a place to hold all patient entries' do
+  it 'creates a place to hold all insurance entries' do
     test_insurance = Insurance.new({'name' => 'Red Cross', 'id' => 1})
     expect(Insurance.all).to eq []
+  end
+
+  it 'allows insurance information to be saved' do
+    test_insurance = Insurance.new({'name' => 'Red Cross', 'id' => 1})
+    test_insurance.save
+    expect(Insurance.all).to eq [test_insurance]
   end
 end
