@@ -20,4 +20,10 @@ describe 'Patient' do
     test_patient = Patient.new({'name' => 'Vanilla Ice', 'birthdate' => '1975-01-15', 'doctor_id' => 1, 'id' => 1})
     expect(Patient.all).to eq []
   end
+
+  it 'allows patients information to be saved' do
+    test_patient = Patient.new({'name' => 'Vanilla Ice', 'birthdate' => '1975-01-15', 'doctor_id' => 1, 'id' => 1})
+    test_patient.save
+    expect(Patient.all).to eq [test_patient]
+  end
 end
