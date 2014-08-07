@@ -38,4 +38,9 @@ class Doctor
     DB.exec("UPDATE doctor SET name = '#{@name}', insurance_id = #{@insurance_id}, specialty_id = #{@specialty_id} WHERE id = #{@id};")
   end
 
+  def delete
+    DB.exec("DELETE FROM doctor WHERE id = #{self.id}")
+    #add in more deletes when join tables and appointment tables are created
+  end
+
 end

@@ -34,4 +34,13 @@ describe 'Doctor' do
     expect(test_doc.insurance_id).to eq 2
   end
 
+  it 'delets a doctors record' do
+    test_doc = Doctor.new({'name' => 'Marty McFly', 'specialty_id' => 1, 'insurance_id' => 1, 'id' => 1})
+    test_doc.save
+    another_test_doc = Doctor.new({'name' => 'Dr. Seuss', 'specialty_id' => 2, 'insurance_id' => 2, 'id' => 2})
+    another_test_doc.save
+    test_doc.delete
+    expect(Doctor.all).to eq [another_test_doc]
+  end
+
 end
