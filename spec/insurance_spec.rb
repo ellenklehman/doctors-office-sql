@@ -31,4 +31,13 @@ describe 'Insurance' do
     test_insurance.update({'name' => 'Health Shield'})
     expect(test_insurance.name).to eq 'Health Shield'
   end
+
+  it 'deletes an insurance record' do
+    test_insurance = Insurance.new({'name' => 'Red Cross', 'id' => 1})
+    test_insurance.save
+    another_test_insurance = Insurance.new({'name' => 'Health Shield', 'id' => 2})
+    another_test_insurance.save
+    another_test_insurance.delete
+    expect(Insurance.all).to eq [test_insurance]
+  end
 end

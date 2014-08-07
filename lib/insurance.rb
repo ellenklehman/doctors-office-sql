@@ -32,4 +32,9 @@ class Insurance
     DB.exec("UPDATE insurance SET name = '#{@name}' WHERE id = #{@id};")
   end
 
+  def delete
+    DB.exec("DELETE FROM insurance WHERE id = #{self.id}")
+    #add more functionality when join tables are added
+  end
+
 end
