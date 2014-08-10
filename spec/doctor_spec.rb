@@ -59,4 +59,23 @@ describe 'Doctor' do
     expect(Doctor.patient_count).to eq [[test_doc, 2], [another_test_doc, 1]]
   end
 
+it 'assigns a patient to a doctor' do
+    test_patient = Patient.new({'name' => 'Vanilla Ice', 'birthdate' => '1975-01-15', 'id' => 1})
+    test_patient.save
+    test_doc = Doctor.new({'name' => 'Dr. Seuss', 'specialty_id' => 2, 'insurance_id' => 2, 'id' => 2})
+    test_doc.save
+    test_doc.add_patient(test_patient.id)
+    expect(test_doc.patients_list).to eq [test_patient]
+  end
+
+  it 'stores and lists all of the patients associated with a doctor' do
+    test_patient = Patient.new({'name' => 'Vanilla Ice', 'birthdate' => '1975-01-15', 'id' => 1})
+    test_patient.save
+    test_doc = Doctor.new({'name' => 'Dr. Seuss', 'specialty_id' => 2, 'insurance_id' => 2, 'id' => 2})
+    test_doc.save
+    test_doc.add_patient(test_patient.id)
+    expect(test_doc.patients_list).to eq [test_patient]
+  end
+
+
 end

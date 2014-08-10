@@ -54,4 +54,21 @@ class Doctor
     docs_patients
   end
 
+  def add_patient(patient_id)
+    DB.exec("INSERT INTO doctor_patient (doctor_id, patient_id) VALUES (#{@id}, #{patient_id})")
+  end
+
+  def patients_list
+    patients = []
+    results = DB.exec("SELECT patient.* FROM doctor JOIN doctor_patient ON (doctor.id = doctor_patient.doctor_id)
+                      JOIN patient ON (doctor_patient.patient_id = patient.id) WHERE doctor.id = #{@id};")
+    results.each do |result|
+      id = result['id'].to_i
+      name = result['name']
+      birthdate = result['birthdate']
+      patients << Patient.new({'name' => name, 'birthdate' => birthdate, 'id' => id})
+    end
+    patients
+  end
+
 end
