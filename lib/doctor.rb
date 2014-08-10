@@ -40,7 +40,7 @@ class Doctor
 
   def delete
     DB.exec("DELETE FROM doctor WHERE id = #{@id};")
-    #add in more deletes when join tables and appointment tables are created
+    DB.exec("DELETE FROM doctor_patient WHERE id = #{@id};")
   end
 
   def self.patient_count
@@ -69,6 +69,14 @@ class Doctor
       patients << Patient.new({'name' => name, 'birthdate' => birthdate, 'id' => id})
     end
     patients
+  end
+
+  def self.find(doctor_name)
+    Doctor.all.each do |doctor|
+      if doctor.name == doctor_name
+        return doctor
+      end
+    end
   end
 
 end

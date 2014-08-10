@@ -77,5 +77,13 @@ it 'assigns a patient to a doctor' do
     expect(test_doc.patients_list).to eq [test_patient]
   end
 
+  it 'finds a doctors name and returns an instance of that doctor' do
+    test_doc = Doctor.new({'name' => 'Dr. Seuss', 'specialty_id' => 2, 'insurance_id' => 2, 'id' => 2})
+    test_doc.save
+    another_test_doc = Doctor.new({'name' => 'Marty McFly', 'specialty_id' => 1, 'insurance_id' => 1, 'id' => 1})
+    another_test_doc.save
+    expect(Doctor.find(test_doc.name)).to eq test_doc
+  end
+
 
 end
