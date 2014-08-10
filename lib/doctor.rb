@@ -43,13 +43,10 @@ class Doctor
     #add in more deletes when join tables and appointment tables are created
   end
 
-  def self.patients
+  def self.patient_count
     docs_patients = []
     self.all.each do |doctor|
-      doc_name = doctor.name
       doc_id = doctor.id
-      doc_specialty = doctor.specialty_id
-      doc_insurance = doctor.insurance_id
       patient_count = DB.exec("SELECT COUNT (*) FROM doctor_patient WHERE doctor_id = #{doc_id};")
       number = patient_count.first['count'].to_i
       docs_patients << [doctor, number]

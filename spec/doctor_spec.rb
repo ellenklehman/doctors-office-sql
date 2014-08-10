@@ -53,7 +53,10 @@ describe 'Doctor' do
     another_test_patient.save
     yet_another_test_patient = Patient.new({'name' => 'Strawberry Ice', 'birthdate' => '1999-12-31', 'doctor_id' => another_test_doc.id, 'id' => 3})
     yet_another_test_patient.save
-    expect(Doctor.patients).to eq [[test_doc, 2], [another_test_doc, 1]]
+    test_patient.add_doctor(test_doc.id)
+    another_test_patient.add_doctor(test_doc.id)
+    yet_another_test_patient.add_doctor(another_test_doc.id)
+    expect(Doctor.patient_count).to eq [[test_doc, 2], [another_test_doc, 1]]
   end
 
 end
