@@ -50,7 +50,7 @@ class Doctor
       doc_id = doctor.id
       doc_specialty = doctor.specialty_id
       doc_insurance = doctor.insurance_id
-      patient_count = DB.exec("SELECT COUNT (*) FROM patient WHERE doctor_id = #{doc_id};")
+      patient_count = DB.exec("SELECT COUNT (*) FROM doctor_patient WHERE doctor_id = #{doc_id};")
       number = patient_count.first['count'].to_i
       docs_patients << [doctor, number]
     end
