@@ -1,5 +1,3 @@
-
-
 class Doctor
 
   attr_reader :name, :specialty_id, :insurance_id, :id

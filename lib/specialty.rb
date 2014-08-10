@@ -46,7 +46,6 @@ class Specialty
 
   def delete
     DB.exec("DELETE FROM specialty WHERE id = #{self.id};")
-    #add in more deletes when join tables and appointment tables are created
   end
 
 end

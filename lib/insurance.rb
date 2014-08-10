@@ -33,7 +33,7 @@ class Insurance
   end
 
   def delete
-    DB.exec("DELETE FROM insurance WHERE id = #{self.id}")
+    DB.exec("DELETE FROM insurance WHERE id = #{@id}")
     #add more functionality when join tables are added
   end
 
