@@ -5,7 +5,7 @@
 ###First week of databases and SQL
 
 ##Set Up
-To set up this program, clone the repository from Github and open the program in your terminal.  You will also need to create a database with multiple tables as outlined below using SQL.
+To set up this program, clone the repository from Github and open the program in your terminal.  You will need to create a database with multiple tables as outlined below using SQL.
 
 
 CREATE DATABASE doctor_office;
@@ -17,5 +17,8 @@ CREATE TABLE doctor_patient (id serial PRIMARY KEY, doctor_id int, patient_id in
 
 ##What it does
 This program creates a filing system for a doctor's office where the practice can keep track of the doctors, their specialities, their patients and insurance companies.
+
+##Known bugs
+You must create at least one specialty and one insurance company before trying to add any doctors to the database.  Patients must be created before they can be added to doctors.
 
 MIT License. Copyright Ellen Lehman 2014
