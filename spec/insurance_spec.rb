@@ -25,6 +25,20 @@ describe 'Insurance' do
     expect(Insurance.all).to eq [test_insurance]
   end
 
+  it 'lists out all doctors for a specific insurance provider' do
+    test_insurance = Insurance.new({'name' => 'Red Cross', 'id' => 1})
+    test_insurance.save
+    another_test_insurance = Insurance.new({'name' => 'Health Shield', 'id' => 2})
+    another_test_insurance.save
+    test_doctor = Doctor.new({'name' => 'Dr. Dre', 'specialty_id' => 1, 'insurance_id' => test_insurance.id})
+    test_doctor.save
+    another_test_doctor = Doctor.new({'name' => 'Dr. Oz', 'specialty_id' => 1, 'insurance_id' => test_insurance.id})
+    another_test_doctor.save
+    yet_another_test_doctor = Doctor.new({'name' => 'Dr. Seuss', 'specialty_id' => 1, 'insurance_id' => another_test_insurance.id})
+    yet_another_test_doctor.save
+    expect(test_insurance.doctors).to eq [test_doctor, another_test_doctor]
+  end
+
   it 'allows insurance information to be updated' do
     test_insurance = Insurance.new({'name' => 'Red Cross', 'id' => 1})
     test_insurance.save

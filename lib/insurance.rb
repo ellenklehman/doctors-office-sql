@@ -27,6 +27,19 @@ class Insurance
     self.name == another_insurance.name
   end
 
+  def doctors
+    results = DB.exec("SELECT * FROM doctor WHERE insurance_id = #{self.id};")
+    doctors = []
+    results.each do |result|
+      name = result['name']
+      insurance_id = result['insurance_id'].to_i
+      specialty_id = result['specialty_id'].to_i
+      id = result['id'].to_i
+      doctors << Doctor.new({'name' => name, 'insurance_id' => insurance_id, 'specialty_id' => specialty_id, 'id' => id})
+    end
+    doctors
+  end
+
   def update(new_information)
     @name = new_information['name']
     DB.exec("UPDATE insurance SET name = '#{@name}' WHERE id = #{@id};")
