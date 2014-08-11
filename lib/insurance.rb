@@ -37,4 +37,11 @@ class Insurance
     #add more functionality when join tables are added
   end
 
+  def self.find(insurance_name)
+    Insurance.all.each do |insurance|
+      if insurance.name == insurance_name
+        return insurance
+      end
+    end
+  end
 end

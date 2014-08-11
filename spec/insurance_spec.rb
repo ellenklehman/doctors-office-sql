@@ -40,4 +40,13 @@ describe 'Insurance' do
     another_test_insurance.delete
     expect(Insurance.all).to eq [test_insurance]
   end
+
+  it 'finds a insurance providers name and returns an instance of that provider' do
+    test_insurance = Insurance.new({'name' => 'Red Cross', 'id' => 1})
+    test_insurance.save
+    another_test_insurance = Insurance.new({'name' => 'Health Shield', 'id' => 2})
+    another_test_insurance.save
+    expect(Insurance.find(test_insurance.name)).to eq test_insurance
+  end
+
 end
