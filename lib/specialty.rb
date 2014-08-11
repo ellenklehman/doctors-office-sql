@@ -48,4 +48,12 @@ class Specialty
     DB.exec("DELETE FROM specialty WHERE id = #{self.id};")
   end
 
+  def self.find(specialty_name)
+    Specialty.all.each do |specialty|
+      if specialty.name == specialty_name
+        return specialty
+      end
+    end
+  end
+
 end

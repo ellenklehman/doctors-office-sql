@@ -55,4 +55,13 @@ describe 'Specialty' do
     expect(Specialty.all).to eq [another_test_specialty]
   end
 
+  it 'finds a specialty and returns an instance of that specialty' do
+    test_specialty = Specialty.new({'name' => 'Pediatrics', 'id' => 1})
+    test_specialty.save
+    another_test_specialty = Specialty.new({'name' => 'General Practice', 'id' => 2})
+    another_test_specialty.save
+    expect(Specialty.find(test_specialty.name)).to eq test_specialty
+  end
+
+
 end
