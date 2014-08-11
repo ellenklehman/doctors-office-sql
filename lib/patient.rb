@@ -56,4 +56,12 @@ class Patient
     doctors
   end
 
+  def self.find(patient_name)
+    Patient.all.each do |patient|
+      if patient.name == patient_name
+        return patient
+      end
+    end
+  end
+
 end

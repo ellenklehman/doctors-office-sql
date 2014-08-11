@@ -60,4 +60,13 @@ describe 'Patient' do
     test_patient.add_doctor(test_doc.id)
     expect(test_patient.doctors_list).to eq [test_doc]
   end
+
+  it 'finds a patients name and returns an instance of that patient' do
+    test_patient = Patient.new({'name' => 'Vanilla Ice', 'birthdate' => '1975-01-15', 'id' => 1})
+    test_patient.save
+    another_test_patient = Patient.new({'name' => 'Chocolate Ice', 'birthdate' => '1986-05-31', 'id' => 1})
+    another_test_patient.save
+    expect(Patient.find(test_patient.name)).to eq test_patient
+  end
+
 end
