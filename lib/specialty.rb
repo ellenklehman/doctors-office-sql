@@ -33,8 +33,9 @@ class Specialty
     results.each do |result|
       name = result['name']
       specialty_id = result['specialty_id'].to_i
+      insurance_id = result['insurance_id'].to_i
       id = result['id'].to_i
-      doctors << Doctor.new({'name' => name, 'specialty_id' => specialty_id, 'id' => id})
+      doctors << Doctor.new({'name' => name, 'specialty_id' => specialty_id, 'insurance_id' => insurance_id, 'id' => id})
     end
     doctors
   end
